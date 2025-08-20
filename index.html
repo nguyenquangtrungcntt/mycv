@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Nguyễn Quang Trung</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .cv-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            padding: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="75" cy="75" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="50" cy="10" r="1" fill="rgba(255,255,255,0.05)"/><circle cx="10" cy="90" r="1" fill="rgba(255,255,255,0.05)"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
+        }
+
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 0 auto 20px;
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 60px;
+            color: white;
+            border: 5px solid rgba(255,255,255,0.2);
+            position: relative;
+            z-index: 1;
+        }
+
+        .name {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+            position: relative;
+            z-index: 1;
+        }
+
+        .title {
+            font-size: 1.2em;
+            opacity: 0.9;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95em;
+        }
+
+        .contact-item i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 40px;
+            padding: 40px;
+        }
+
+        .sidebar {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 10px;
+            height: fit-content;
+        }
+
+        .content {
+            padding-left: 20px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.4em;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #3498db;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -3px;
+            left: 0;
+            width: 30px;
+            height: 3px;
+            background: #e74c3c;
+        }
+
+        .experience-item, .education-item {
+            margin-bottom: 25px;
+            padding-left: 20px;
+            border-left: 3px solid #3498db;
+            position: relative;
+        }
+
+        .experience-item::before, .education-item::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            background: #3498db;
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+
+        .job-title, .degree {
+            font-weight: bold;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+
+        .company, .school {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 5px;
+        }
+
+        .date {
+            color: #95a5a6;
+            font-size: 0.9em;
+            margin-bottom: 10px;
+        }
+
+        .description {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, #3498db, #2980b9);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9em;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            transform: translateY(-2px);
+        }
+
+        .language-item, .interest-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .language-level {
+            background: #27ae60;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-size: 0.8em;
+        }
+
+        .interests {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .interest-tag {
+            background: #e8f4f8;
+            color: #2c3e50;
+            padding: 8px 12px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            border: 1px solid #d5dbdb;
+        }
+
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+                gap: 20px;
+                padding: 20px;
+            }
+            
+            .contact-info {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .name {
+                font-size: 2em;
+            }
+            
+            .content {
+                padding-left: 0;
+            }
+        }
+
+        .print-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #e74c3c;
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 50%;
+            font-size: 1.2em;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+
+        .print-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(231, 76, 60, 0.4);
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .cv-container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+            
+            .print-btn {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="cv-container">
+        <header class="header">
+            <div class="profile-img">
+                <i class="fas fa-user"></i>
+            </div>
+            <h1 class="name">Nguyễn Quang Trung</h1>
+            <p class="title">Nhà phát triển phần mềm</p>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>0123 456 789</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>trung.nq@email.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Hà Nội, Việt Nam</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fab fa-linkedin"></i>
+                    <span>linkedin.com/in/nguyenquangtrung</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <aside class="sidebar">
+                <section class="section">
+                    <h2 class="section-title">Kỹ năng</h2>
+                    <div class="skills-list">
+                        <span class="skill-tag">JavaScript</span>
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">HTML/CSS</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Docker</span>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Ngôn ngữ</h2>
+                    <div class="language-item">
+                        <span>Tiếng Việt</span>
+                        <span class="language-level">Bản ngữ</span>
+                    </div>
+                    <div class="language-item">
+                        <span>Tiếng Anh</span>
+                        <span class="language-level">Thành thạo</span>
+                    </div>
+                    <div class="language-item">
+                        <span>Tiếng Nhật</span>
+                        <span class="language-level">Cơ bản</span>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Sở thích</h2>
+                    <div class="interests">
+                        <span class="interest-tag">Đọc sách</span>
+                        <span class="interest-tag">Lập trình</span>
+                        <span class="interest-tag">Du lịch</span>
+                        <span class="interest-tag">Nhiếp ảnh</span>
+                        <span class="interest-tag">Âm nhạc</span>
+                    </div>
+                </section>
+            </aside>
+
+            <main class="content">
+                <section class="section">
+                    <h2 class="section-title">Giới thiệu</h2>
+                    <p class="description">
+                        Tôi là một nhà phát triển phần mềm với hơn 3 năm kinh nghiệm trong việc xây dựng ứng dụng web và di động. 
+                        Có kinh nghiệm làm việc với các công nghệ hiện đại như React, Node.js, và Python. 
+                        Tôi đam mê công nghệ và luôn tìm kiếm cơ hội để học hỏi và phát triển kỹ năng mới.
+                    </p>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Kinh nghiệm làm việc</h2>
+                    <div class="experience-item">
+                        <div class="job-title">Lập trình viên Full-Stack</div>
+                        <div class="company">Công ty TNHH Công nghệ ABC</div>
+                        <div class="date">01/2022 - Hiện tại</div>
+                        <div class="description">
+                            • Phát triển và duy trì các ứng dụng web sử dụng React và Node.js<br>
+                            • Thiết kế và triển khai RESTful APIs<br>
+                            • Làm việc trong môi trường Agile/Scrum<br>
+                            • Tối ưu hóa hiệu suất ứng dụng và cơ sở dữ liệu
+                        </div>
+                    </div>
+                    
+                    <div class="experience-item">
+                        <div class="job-title">Lập trình viên Front-End</div>
+                        <div class="company">Công ty Cổ phần XYZ</div>
+                        <div class="date">06/2021 - 12/2021</div>
+                        <div class="description">
+                            • Xây dựng giao diện người dùng responsive với HTML, CSS, JavaScript<br>
+                            • Tích hợp với APIs và xử lý dữ liệu từ backend<br>
+                            • Tối ưu hóa trải nghiệm người dùng (UX/UI)<br>
+                            • Đảm bảo tương thích trên các trình duyệt khác nhau
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <div class="job-title">Thực tập sinh Lập trình</div>
+                        <div class="company">Startup DEF</div>
+                        <div class="date">01/2021 - 05/2021</div>
+                        <div class="description">
+                            • Hỗ trợ phát triển tính năng mới cho ứng dụng di động<br>
+                            • Viết unit tests và debugging<br>
+                            • Tham gia các buổi code review và meeting team<br>
+                            • Học hỏi các best practices trong phát triển phần mềm
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Học vấn</h2>
+                    <div class="education-item">
+                        <div class="degree">Cử nhân Công nghệ Thông tin</div>
+                        <div class="school">Đại học Bách khoa Hà Nội</div>
+                        <div class="date">2018 - 2022</div>
+                        <div class="description">
+                            GPA: 3.6/4.0 - Chuyên ngành: Kỹ thuật phần mềm<br>
+                            Các môn học chính: Cấu trúc dữ liệu, Thuật toán, Cơ sở dữ liệu, Mạng máy tính
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Dự án nổi bật</h2>
+                    <div class="experience-item">
+                        <div class="job-title">Hệ thống quản lý bán hàng</div>
+                        <div class="company">Dự án cá nhân</div>
+                        <div class="date">2023</div>
+                        <div class="description">
+                            Xây dựng hệ thống quản lý bán hàng hoàn chỉnh với React, Node.js, và MySQL. 
+                            Bao gồm quản lý sản phẩm, đơn hàng, khách hàng và báo cáo thống kê.
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <button class="print-btn" onclick="window.print()" title="In CV">
+        <i class="fas fa-print"></i>
+    </button>
+
+    <script>
+        // Add smooth scrolling and animations
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add hover effects to skill tags
+            const skillTags = document.querySelectorAll('.skill-tag');
+            skillTags.forEach(tag => {
+                tag.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px) scale(1.05)';
+                });
+                
+                tag.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0) scale(1)';
+                });
+            });
+
+            // Add animation to sections on scroll
+            const sections = document.querySelectorAll('.section');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            });
+
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(30px)';
+                section.style.transition = 'all 0.6s ease';
+                observer.observe(section);
+            });
+        });
+    </script>
+</body>
+</html>
